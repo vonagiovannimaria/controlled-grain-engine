@@ -1,0 +1,183 @@
+{
+    "patcher": {
+        "fileversion": 1,
+        "appversion": {
+            "major": 9,
+            "minor": 1,
+            "revision": 2,
+            "architecture": "x64",
+            "modernui": 1
+        },
+        "classnamespace": "dsp.gen",
+        "rect": [ 34.0, 77.0, 1980.0, 993.0 ],
+        "boxes": [
+            {
+                "box": {
+                    "fontface": 3,
+                    "id": "obj-108",
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 124.0, 787.0, 417.0, 20.0 ],
+                    "text": "Esame di Campionamento, Sintesi ed Elaborazione Digitale dei Suoni II"
+                }
+            },
+            {
+                "box": {
+                    "fontface": 2,
+                    "id": "obj-102",
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 124.0, 810.0, 176.0, 20.0 ],
+                    "text": "Docente: Prof. Federico Scalas"
+                }
+            },
+            {
+                "box": {
+                    "fontface": 2,
+                    "id": "obj-100",
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 124.0, 832.0, 162.0, 20.0 ],
+                    "text": "Allievo: Giovanni Maria Vona"
+                }
+            },
+            {
+                "box": {
+                    "fontface": 2,
+                    "id": "obj-97",
+                    "maxclass": "comment",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 124.0, 765.0, 255.0, 20.0 ],
+                    "text": "Conservatorio Statale di Musica \"O. Respighi\""
+                }
+            },
+            {
+                "box": {
+                    "angle": 270.0,
+                    "bgcolor": [ 0.261531128329206, 0.261531061881087, 0.261531079296546, 1.0 ],
+                    "border": 2,
+                    "bordercolor": [ 0.09782765023003, 0.097827613875914, 0.09782762332443, 1.0 ],
+                    "id": "obj-109",
+                    "maxclass": "panel",
+                    "mode": 0,
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 124.0, 765.0, 416.84859013557434, 86.10169649124146 ],
+                    "proportion": 0.39,
+                    "saved_attribute_attributes": {
+                        "bgfillcolor": {
+                            "expression": "themecolor.live_macro_title"
+                        },
+                        "bordercolor": {
+                            "expression": "themecolor.live_contrast_frame"
+                        }
+                    }
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-14",
+                    "maxclass": "newobj",
+                    "numinlets": 1,
+                    "numoutlets": 0,
+                    "patching_rect": [ 29.0, 829.0, 35.0, 22.0 ],
+                    "text": "out 1"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-13",
+                    "maxclass": "newobj",
+                    "numinlets": 0,
+                    "numoutlets": 1,
+                    "outlettype": [ "" ],
+                    "patching_rect": [ 522.0, 23.0, 28.0, 22.0 ],
+                    "text": "in 4"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-12",
+                    "maxclass": "newobj",
+                    "numinlets": 0,
+                    "numoutlets": 1,
+                    "outlettype": [ "" ],
+                    "patching_rect": [ 358.0, 23.0, 28.0, 22.0 ],
+                    "text": "in 3"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-11",
+                    "maxclass": "newobj",
+                    "numinlets": 0,
+                    "numoutlets": 1,
+                    "outlettype": [ "" ],
+                    "patching_rect": [ 193.0, 23.0, 28.0, 22.0 ],
+                    "text": "in 2"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-6",
+                    "maxclass": "newobj",
+                    "numinlets": 0,
+                    "numoutlets": 1,
+                    "outlettype": [ "" ],
+                    "patching_rect": [ 29.0, 23.0, 28.0, 22.0 ],
+                    "text": "in 1"
+                }
+            },
+            {
+                "box": {
+                    "code": "// Grain envelope selector\r\n//\r\n// in1 = x, fase del grano 0. -> 1.\r\n// in2 = shape:\r\n//       0 = Hann\r\n//       1 = Triangolare\r\n//       2 = Gaussiano\r\n//       3 = Trapezoidale\r\n//       4 = Tukey\r\n//       5 = Blackman\r\n//       6 = Percussivo\r\n//\r\n// in3 = paramA\r\n//      Gaussiano: sigma\r\n//      Trapezoidale: attack\r\n//      Tukey: edge\r\n//      Percussivo: attack\r\n//\r\n// in4 = paramB\r\n//      Gaussiano: mu\r\n//      Trapezoidale: release\r\n//      Percussivo: decay_curve\r\n\r\nx = clamp(in1, 0, 1);\r\nshape = floor(in2 + 0.5);\r\n\r\nparamA = in3;\r\nparamB = in4;\r\n\r\ny = 0;\r\n\r\n// 0. Hann\r\nif (shape == 0) {\r\n    y = 0.5 - 0.5 * cos(2 * pi * x);\r\n}\r\n\r\n// 1. Triangolare\r\nelse if (shape == 1) {\r\n    y = 1 - abs((2 * x) - 1);\r\n}\r\n\r\n// 2. Gaussiano normalizzato\r\nelse if (shape == 2) {\r\n    sigma = max(paramA, 0.0001);\r\n    mu = paramB;\r\n    num = pow(x - mu, 2);\r\n    den = 2 * pow(sigma, 2);\r\n    y = exp(-num / den);\r\n}\r\n\r\n// 3. Trapezoidale\r\nelse if (shape == 3) {\r\n    attack = clamp(paramA, 0.0001, 0.4999);\r\n    release = clamp(paramB, 0.0001, 0.4999);\r\n\r\n    if (x < attack) {\r\n        y = x / attack;\r\n    }\r\n    else if (x > 1 - release) {\r\n        y = (1 - x) / release;\r\n    }\r\n    else {\r\n        y = 1;\r\n    }\r\n}\r\n\r\n// 4. Tukey semplificato (tapered cosine)\r\nelse if (shape == 4) {\r\n    edge = clamp(paramA, 0.0001, 0.4999);\r\n\r\n    if (x < edge) {\r\n        phase = x / edge;\r\n        y = 0.5 - 0.5 * cos(pi * phase);\r\n    }\r\n    else if (x > 1 - edge) {\r\n        phase = (1 - x) / edge;\r\n        y = 0.5 - 0.5 * cos(pi * phase);\r\n    }\r\n    else {\r\n        y = 1;\r\n    }\r\n}\r\n\r\n// 5. Blackman\r\nelse if (shape == 5) {\r\n    y = 0.42 - 0.5 * cos(2 * pi * x) + 0.08 * cos(4 * pi * x);\r\n}\r\n\r\n// 6. Percussivo\r\nelse if (shape == 6) {\r\n    attack = clamp(paramA, 0.0001, 0.9999);\r\n    decay_curve = max(paramB, 0.0001);\r\n\r\n    if (x < attack) {\r\n        y = x / attack;\r\n    }\r\n    else {\r\n        phase = (1 - x) / (1 - attack);\r\n        y = pow(phase, decay_curve);\r\n    }\r\n}\r\n\r\n// fallback: Hann\r\nelse {\r\n    y = 0.5 - 0.5 * cos(2 * pi * x);\r\n}\r\n\r\nout1 = clamp(y, 0, 1);",
+                    "fontface": 0,
+                    "fontname": "<Monospaced>",
+                    "fontsize": 12.0,
+                    "id": "obj-5",
+                    "maxclass": "codebox",
+                    "numinlets": 4,
+                    "numoutlets": 1,
+                    "outlettype": [ "" ],
+                    "patching_rect": [ 29.0, 137.0, 512.0, 606.0 ]
+                }
+            }
+        ],
+        "lines": [
+            {
+                "patchline": {
+                    "destination": [ "obj-5", 1 ],
+                    "source": [ "obj-11", 0 ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [ "obj-5", 2 ],
+                    "source": [ "obj-12", 0 ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [ "obj-5", 3 ],
+                    "source": [ "obj-13", 0 ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [ "obj-14", 0 ],
+                    "source": [ "obj-5", 0 ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [ "obj-5", 0 ],
+                    "source": [ "obj-6", 0 ]
+                }
+            }
+        ]
+    }
+}
