@@ -192,14 +192,15 @@ controlled-grain-engine/
 │   ├── CGE-Presentazione.pdf
 │   └── CGE-Tesina.pdf
 └── max/
-    ├── CGE.maxproj
-    ├── patchers/
-    │   └── CGE_MASTER.maxpat
-    ├── other/
-    │   └── grain_envelopes_all.pdf
-    └── code/
-        ├── envelope_view.js
-        └── inviluppo1.gendsp
+    └── CGE/
+        ├── CGE.maxproj
+        ├── code/
+        │   ├── envelope_view.js
+        │   └── inviluppo1.gendsp
+        ├── other/
+        │   └── grain_envelopes_all.pdf
+        └── patchers/
+            └── CGE_MASTER.maxpat
 ```
 
 ## Requirements
