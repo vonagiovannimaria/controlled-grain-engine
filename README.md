@@ -197,11 +197,16 @@ controlled-grain-engine/
         ├── code/
         │   ├── envelope_view.js
         │   └── inviluppo1.gendsp
+        ├── media/
+        │   ├── snare-example.wav
+        │   └── grain_envelopes_all-1.png
         ├── other/
         │   └── grain_envelopes_all.pdf
         └── patchers/
-            └── CGE_MASTER.maxpat
+            └── MASTER-controlled-grain-engine.maxpat
 ```
+
+The `max/CGE/` folder contains the complete Max/MSP project. Open `CGE.maxproj` from this folder to preserve the expected project structure and relative paths between patchers, code files, media files and support resources.
 
 ## Requirements
 

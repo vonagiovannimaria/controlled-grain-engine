@@ -13,6 +13,51 @@
         "boxes": [
             {
                 "box": {
+                    "id": "obj-16",
+                    "maxclass": "newobj",
+                    "numinlets": 1,
+                    "numoutlets": 1,
+                    "outlettype": [ "bang" ],
+                    "patching_rect": [ 301.8000000715256, 186.0, 58.0, 22.0 ],
+                    "text": "loadbang"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-45",
+                    "maxclass": "newobj",
+                    "numinlets": 1,
+                    "numoutlets": 1,
+                    "outlettype": [ "" ],
+                    "patching_rect": [ 467.1097691655159, 491.8068650364876, 231.0, 22.0 ],
+                    "text": "loadmess read grain_envelopes_all-1.png"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-28",
+                    "maxclass": "fpic",
+                    "numinlets": 1,
+                    "numoutlets": 1,
+                    "outlettype": [ "jit_matrix" ],
+                    "patching_rect": [ 467.1097691655159, 268.37829571962357, 333.9285682439804, 221.428569316864 ],
+                    "pic": "grain_envelopes_all-1.png"
+                }
+            },
+            {
+                "box": {
+                    "id": "obj-25",
+                    "linecount": 3,
+                    "maxclass": "newobj",
+                    "numinlets": 1,
+                    "numoutlets": 1,
+                    "outlettype": [ "" ],
+                    "patching_rect": [ 37.0, 42.00000089406967, 65.0, 50.0 ],
+                    "text": "loadmess snare-example.wav"
+                }
+            },
+            {
+                "box": {
                     "fontsize": 12.0,
                     "id": "obj-20",
                     "maxclass": "newobj",
@@ -1199,32 +1244,6 @@
             },
             {
                 "box": {
-                    "fontsize": 8.0,
-                    "id": "obj-47",
-                    "linecount": 2,
-                    "maxclass": "message",
-                    "numinlets": 2,
-                    "numoutlets": 1,
-                    "outlettype": [ "" ],
-                    "patching_rect": [ 465.18516993522644, 482.74072498083115, 338.0, 27.0 ],
-                    "text": "read \"C:/Users/killf/Desktop/Esame Campionamento e Sintesi 2/inviluppi-img/grain_envelopes_all.pdf\""
-                }
-            },
-            {
-                "box": {
-                    "disablefind": 0,
-                    "id": "obj-45",
-                    "maxclass": "jweb",
-                    "numinlets": 1,
-                    "numoutlets": 1,
-                    "outlettype": [ "" ],
-                    "patching_rect": [ 465.18516993522644, 271.1111022233963, 337.03702598810196, 209.62962275743484 ],
-                    "rendermode": 2,
-                    "url": "C:/Users/killf/Desktop/Esame Campionamento e Sintesi 2/inviluppi-img/grain_envelopes_all.pdf"
-                }
-            },
-            {
-                "box": {
                     "fontsize": 9.0,
                     "id": "obj-129",
                     "maxclass": "comment",
@@ -1601,7 +1620,7 @@
                     "numoutlets": 1,
                     "outlettype": [ "" ],
                     "patching_rect": [ 62.800000071525574, 210.80000013113022, 88.0, 22.0 ],
-                    "text": "13714.285714"
+                    "text": "0."
                 }
             },
             {
@@ -1642,11 +1661,12 @@
                 "box": {
                     "fontsize": 12.0,
                     "id": "obj-15",
+                    "linecount": 2,
                     "maxclass": "newobj",
                     "numinlets": 1,
                     "numoutlets": 1,
                     "outlettype": [ "" ],
-                    "patching_rect": [ 957.0, 442.0, 83.0, 22.0 ],
+                    "patching_rect": [ 957.0, 442.0, 58.0, 36.0 ],
                     "text": "loadmess 127"
                 }
             },
@@ -4185,11 +4205,12 @@
                 "box": {
                     "fontsize": 12.0,
                     "id": "obj-51",
+                    "linecount": 2,
                     "maxclass": "newobj",
                     "numinlets": 6,
                     "numoutlets": 1,
                     "outlettype": [ "" ],
-                    "patching_rect": [ 253.93900603055954, 466.2592625617981, 103.0, 22.0 ],
+                    "patching_rect": [ 254.0, 466.2592625617981, 59.0, 36.0 ],
                     "text": "scale 0. 127. 0. 1."
                 }
             },
@@ -4321,13 +4342,11 @@
                 "box": {
                     "fontsize": 12.0,
                     "id": "obj-6",
-                    "linecount": 6,
                     "maxclass": "message",
                     "numinlets": 2,
                     "numoutlets": 1,
                     "outlettype": [ "" ],
-                    "patching_rect": [ 221.80000007152557, 117.80000013113022, 171.0, 91.0 ],
-                    "text": "\"C:/Users/killf/Desktop/Esame Campionamento e Sintesi 2/Esempi audio/STELOUSE_drum_loop_shivers_acoustic_01_140.wav\""
+                    "patching_rect": [ 221.80000007152557, 117.80000013113022, 171.0, 22.0 ]
                 }
             },
             {
@@ -4839,6 +4858,12 @@
             },
             {
                 "patchline": {
+                    "destination": [ "obj-20", 0 ],
+                    "source": [ "obj-16", 0 ]
+                }
+            },
+            {
+                "patchline": {
                     "destination": [ "obj-2", 2 ],
                     "source": [ "obj-173", 1 ]
                 }
@@ -4891,6 +4916,12 @@
                 "patchline": {
                     "destination": [ "obj-21", 0 ],
                     "source": [ "obj-24", 0 ]
+                }
+            },
+            {
+                "patchline": {
+                    "destination": [ "obj-4", 0 ],
+                    "source": [ "obj-25", 0 ]
                 }
             },
             {
@@ -4973,8 +5004,8 @@
             },
             {
                 "patchline": {
-                    "destination": [ "obj-45", 0 ],
-                    "source": [ "obj-47", 0 ]
+                    "destination": [ "obj-28", 0 ],
+                    "source": [ "obj-45", 0 ]
                 }
             },
             {
