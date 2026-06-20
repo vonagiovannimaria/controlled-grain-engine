@@ -176,6 +176,8 @@ The main synthesis parameters include:
 controlled-grain-engine/
 ├── README.md
 ├── LICENSE.md
+├── analysis/
+│   └── grain_envelopes.gnuplot
 ├── docs/
 │   ├── CGE-Presentazione.pdf
 │   └── CGE-Tesina.pdf
