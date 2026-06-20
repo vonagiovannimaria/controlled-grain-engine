@@ -154,7 +154,7 @@ Examples:
 The available envelope curves are documented in:
 
 ```text
-max/other/grain_envelopes_all.pdf
+max/CGE/other/grain_envelopes_all.pdf
 ```
 
 ## Parameters
@@ -170,24 +170,12 @@ The main synthesis parameters include:
 - **Envelope shape** — selects the grain amplitude window
 - **Envelope parameters A/B** — control shape-dependent envelope parameters
 
-## Audio Example
-
-An audio example is included in:
-
-```text
-audio_examples/snare-example.wav
-```
-
-The example is intended as a simple demonstration of the processor behavior on a source rich in transients.
-
 ## Repository Structure
 
 ```text
 controlled-grain-engine/
 ├── README.md
 ├── LICENSE.md
-├── audio_examples/
-│   └── snare-example.wav
 ├── docs/
 │   ├── CGE-Presentazione.pdf
 │   └── CGE-Tesina.pdf
@@ -219,13 +207,13 @@ To open and use the project:
 The main patch is located at:
 
 ```text
-max/patchers/CGE_MASTER.maxpat
+max/CGE/patchers/CGE_MASTER.maxpat
 ```
 
 The Max project file is:
 
 ```text
-max/CGE.maxproj
+max/CGE/CGE.maxproj
 ```
 
 ## Usage
@@ -233,16 +221,16 @@ max/CGE.maxproj
 1. Open the Max project:
 
 ```text
-max/CGE.maxproj
+max/CGE/CGE.maxproj
 ```
 
 2. Open the main patch:
 
 ```text
-max/patchers/CGE_MASTER.maxpat
+max/CGE/patchers/CGE_MASTER.maxpat
 ```
 
-3. Load an audio file into the buffer.
+3. Possibly replace the audio file in the buffer by loading another one.
 
 4. Select a loop region in the waveform, or use the full buffer.
 
@@ -283,7 +271,6 @@ Possible future improvements include:
 - independent random grain durations
 - dynamic pitch-dispersion ranges
 - dynamic position-dispersion ranges
-- preset management
 - MIDI mapping
 - internal automation
 - expanded visualization of grain distributions
